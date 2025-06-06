@@ -1,8 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Patch, Post, Query } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { PaginationDto } from 'src/common/dto';
+import { AIRCRAFT_SERVICE } from 'src/config';
 
 @Controller('aircraft')
 export class AircraftController {
-  constructor() {}
+  constructor(
+    @Inject(AIRCRAFT_SERVICE) private readonly aircraftClient: ClientProxy,
+  ) {}
 
   @Post()
   createAircraft() {
@@ -10,8 +15,8 @@ export class AircraftController {
   }
 
   @Get()
-  findAllAircrafts() {
-    return { message: 'List of aircraft' };
+  findAllAircrafts(@Query() paginationDto: PaginationDto) {
+    return this.aircraftClient.send({ cmd: 'find_all_aircrafts' }, paginationDto);
   }
 
   @Get(':id')
