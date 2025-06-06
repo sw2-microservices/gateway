@@ -1,0 +1,1 @@
+export const AIRCRAFT_SERVICE = 'AIRCRAFT_SERVICE';
