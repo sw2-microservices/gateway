@@ -1,1 +1,2 @@
 export const AIRCRAFT_SERVICE = 'AIRCRAFT_SERVICE';
+export const ORDER_SERVICE = 'ORDER_SERVICE';
