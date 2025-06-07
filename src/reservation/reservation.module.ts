@@ -1,21 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ReservationController } from './reservation.controller';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { envs, RESERVATION_SERVICE } from 'src/config';
+import { NatsModule } from 'src/transports/nats.module';
 
 @Module({
   controllers: [ReservationController],
   imports: [
-    ClientsModule.register([
-      {
-        name: RESERVATION_SERVICE,
-        transport: Transport.TCP,
-        options: {
-          // host: envs.reservationMicroserviceHost,
-          // port: envs.reservationMicroservicePort,
-        },
-      },
-    ]),
+    NatsModule
   ],
 })
-export class ReservationModule {}
+export class ReservationModule { }
