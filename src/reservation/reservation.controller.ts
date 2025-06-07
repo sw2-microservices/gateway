@@ -14,12 +14,13 @@ import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { PaginationDto } from '../common';
 import { ClientProxy } from '@nestjs/microservices';
-import { RESERVATION_SERVICE } from 'src/config';
+import { NATS_SERVICE } from 'src/config';
+
 
 @Controller('reservation')
 export class ReservationController {
   constructor(
-    @Inject(RESERVATION_SERVICE) private readonly client: ClientProxy,
+    @Inject(NATS_SERVICE) private readonly client: ClientProxy,
   ) {}
 
   @Post()
