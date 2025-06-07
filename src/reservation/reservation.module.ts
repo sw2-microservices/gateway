@@ -11,8 +11,8 @@ import { envs, RESERVATION_SERVICE } from 'src/config';
         name: RESERVATION_SERVICE,
         transport: Transport.TCP,
         options: {
-          host: envs.reservationMicroserviceHost,
-          port: envs.reservationMicroservicePort,
+          // host: envs.reservationMicroserviceHost,
+          // port: envs.reservationMicroservicePort,
         },
       },
     ]),
