@@ -18,8 +18,6 @@ export class AuthGuard implements CanActivate {
     @Inject( NATS_SERVICE ) private readonly client: ClientProxy, 
   ) {}
 
-
-
   async canActivate(context: ExecutionContext): Promise<boolean> {
 
     const request = context.switchToHttp().getRequest();
